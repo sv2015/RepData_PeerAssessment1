@@ -10,7 +10,9 @@ library(ggplot2)
 ## Loading and preprocessing the data
 
 ```r
+# unzip file
 unzip(zipfile = "activity.zip")
+# read csv
 activity <- read.csv("activity.csv", stringsAsFactors = FALSE)
 
 # convert the date field to an actual date

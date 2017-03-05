@@ -127,7 +127,9 @@ library(ggplot2)</code></pre>
 </div>
 <div id="loading-and-preprocessing-the-data" class="section level2">
 <h2>Loading and preprocessing the data</h2>
-<pre class="r"><code>unzip(zipfile = &quot;activity.zip&quot;)
+<pre class="r"><code># unzip file
+unzip(zipfile = &quot;activity.zip&quot;)
+# read csv
 activity &lt;- read.csv(&quot;activity.csv&quot;, stringsAsFactors = FALSE)
 
 # convert the date field to an actual date

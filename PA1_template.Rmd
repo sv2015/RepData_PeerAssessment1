@@ -12,7 +12,7 @@ library(ggplot2)
 
 
 ## Loading and preprocessing the data
-```{r, echo = TRUE, cache=TRUE}
+```{r, echo = TRUE}
 # unzip file
 unzip(zipfile = "activity.zip")
 # read csv
@@ -25,7 +25,7 @@ activity <- mutate(activity, date = as.Date(date, format = '%Y-%m-%d'))
 
 
 ## What is mean total number of steps taken per day?
-```{r meansteps, echo = TRUE, cache=TRUE}
+```{r meansteps, echo = TRUE}
 # Histogram of the total number of steps taken each day
 aggactivity <- activity %>% select(date, steps) %>%
   group_by(date) %>%
@@ -46,7 +46,7 @@ median(aggactivity$dailysteps, na.rm = TRUE)
 
 
 ## What is the average daily activity pattern?
-```{r avgdaily, echo=TRUE, cache=TRUE}
+```{r avgdaily, echo=TRUE}
 # What is the average daily activity pattern?
 # Time series plot of the average number of steps taken
 avgdailypattern <- activity %>% select(steps, interval) %>% group_by(interval) %>% summarise(avgsteps = mean(steps, na.rm =TRUE))
@@ -66,7 +66,7 @@ avgdailypattern[which.max(avgdailypattern$avgsteps),]$interval
 ```
 
 ## Imputing missing values
-``` {r imputmissingvals, echo=TRUE, cache=TRUE}
+``` {r imputmissingvals, echo=TRUE}
 # Calculate the total number of missing values
 missingvalues <- sum(!complete.cases(activity))
 
@@ -111,7 +111,7 @@ The mean and median in this case are the same.
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
-```{r daytypepatterns, echo=TRUE, cache=TRUE}
+```{r daytypepatterns, echo=TRUE}
 # Activity patterns between weekdays and weekends?
 filledactivity <- mutate(filledactivity, wday = weekdays(date))
 filledactivity <- mutate(filledactivity, iswday = as.factor(ifelse(wday %in% c('Saturday', 'Sunday'), "weekend", "weekday")))
